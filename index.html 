@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Together Time</title> 
+  <link rel="stylesheet" href="styles.css"> 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"> 
+ <style type="text/css" id="dcoder_stylesheet">:root {
+    --primary: #ff6f91;
+    --secondary: #845ec2;
+    --accent: #ffc75f;
+    --text: #ffffff;
+    --bg: #1a1a1a;
+}
+
+body.light-theme {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --primary: #845ec2; /* example alternate colors */
+  --secondary: #ff6f91;
+  --accent: #ffc75f;
+  background: var(--bg);
+  color: var(--text);
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.gradient-bg {
+    /* Add your gradient background styles here */
+}
+
+.particles-bg {
+    /* Add your particles background styles here */
+}
+
+.waves-bg {
+    /* Add your waves background styles here */
+}
+
+.side-nav {
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.side-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.side-nav li {
+    margin: 10px 0;
+}
+
+.side-nav a {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: var(--primary);
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.side-nav a.active {
+    background: var(--secondary);
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    padding: 40px 30px;
+    text-align: center;
+}
+
+h1.main-title {
+    margin-bottom: 32px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+h2 {
+    margin-bottom: 32px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.timer {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-block {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 24px 16px;
+    min-width: 70px;
+    color: var(--text);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 2px solid var(--primary);
+}
+
+.time-block span {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    display: block;
+}
+
+.time-block p {
+    font-size: 1rem;
+    margin-top: 8px;
+    color: var(--text);
+    opacity: 0.8;
+}
+
+.memory-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.memory-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    color: var(--text);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.gallery-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    height: 100px; /* Adjust height as needed */
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+}
+
+.contact-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: var(--primary);
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contact-form button:hover {
+    background: var(--secondary);
+}
+
+.scroll-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    width: 0;
+    background: var(--primary);
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary);
+    color: var(--text);
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    display: none; /* Initially hidden */
+}
+
+.scroll-top:hover {
+    background: var(--secondary);
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--primary);
+    color: var(--text);
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .timer {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .container {
+        padding: 20px 6px;
+    }
+}</style></head> 
+ <body> <!-- Background Container --> 
+  <div class="background-container"> 
+   <div class="gradient-bg active"></div> 
+   <div class="particles-bg"></div> 
+   <div class="waves-bg"></div> 
+  </div> <!-- Side Navigation Dots --> 
+  <nav class="side-nav"> 
+   <ul> 
+    <li><a href="#home" class="active" data-section="Home"></a></li> 
+    <li><a href="#timer" data-section="Timer"></a></li> 
+    <li><a href="#memories" data-section="Memories"></a></li> 
+    <li><a href="#gallery" data-section="Gallery"></a></li> 
+    <li><a href="#contact" data-section="Contact"></a></li> 
+    <link rel="stylesheet" href="styles.css"> 
+   </ul> 
+  </nav> <!-- Main Content --> 
+  <main> <!-- Home Section --> 
+   <section id="home" class="section"> 
+    <div class="container"> 
+     <div class="user-info"> 
+      <div class="user-avatar">
+        @ 
+      </div> <span class="username">adnan112prog</span> 
+      <div class="current-time" id="currentTime">
+        2025-05-28 21:16:14 UTC 
+      </div> 
+     </div> 
+     <h1 class="main-title">Our Journey Together</h1> 
+     <div class="scroll-indicator"> 
+      <div class="mouse"> 
+       <div class="wheel"></div> 
+      </div> 
+      <div class="arrow-down"> <span></span> <span></span> <span></span> 
+      </div> 
+     </div> 
+    </div> 
+   </section> <!-- Timer Section --> 
+   <section id="timer" class="section"> 
+    <div class="container"> 
+     <h2>Time Together</h2> 
+     <div class="timer"> 
+      <div class="time-block" style="--color:#ff6f91;"> <span id="days">0</span> 
+       <p>Days</p> 
+      </div> 
+      <div class="time-block" style="--color:#ff9671;"> <span id="hours">0</span> 
+       <p>Hours</p> 
+      </div> 
+      <div class="time-block" style="--color:#ffc75f;"> <span id="minutes">0</span> 
+       <p>Minutes</p> 
+      </div> 
+      <div class="time-block" style="--color:#f9f871;"> <span id="seconds">0</span> 
+       <p>Seconds</p> 
+      </div> 
+     </div> 
+    </div> 
+   </section> <!-- Memories Section --> 
+   <section id="memories" class="section"> 
+    <div class="container"> 
+     <h2>Our Memories</h2> 
+     <div class="memory-cards"> 
+      <div class="memory-card"> 
+       <h3>First Meeting</h3> 
+       <p>2025-05-27 05:08:14 UTC</p> 
+      </div> 
+      <div class="memory-card"> 
+       <h3>Special Moments</h3> 
+       <p>Growing together</p> 
+      </div> 
+     </div> 
+    </div> 
+   </section> <!-- Gallery Section --> 
+   <section id="gallery" class="section"> 
+    <div class="container"> 
+     <h2>Photo Gallery</h2> 
+     <div class="gallery-grid"> <!-- Placeholder for gallery items --> 
+      <div class="gallery-item" style="background-color: rgba(255,255,255,0.1)"></div> 
+      <div class="gallery-item" style="background-color: rgba(255,255,255,0.1)"></div> 
+      <div class="gallery-item" style="background-color: rgba(255,255,255,0.1)"></div> 
+      <div class="gallery-item" style="background-color: rgba(255,255,255,0.1)"></div> 
+     </div> 
+    </div> 
+   </section> <!-- Contact Section --> 
+   <section id="contact" class="section"> 
+    <div class="container"> 
+     <h2>Get in Touch</h2> 
+     <form class="contact-form"> 
+      <input type="text" placeholder="Your Name" required> 
+      <input type="email" placeholder="Your Email" required> <textarea placeholder="Your Message" required></textarea> <button type="submit" class="submit-btn">Send Message</button> 
+     </form> 
+    </div> 
+   </section> 
+  </main> <!-- Scroll Progress Bar --> 
+  <div class="scroll-progress-container"> 
+   <div class="scroll-progress-bar"></div> 
+  </div> <!-- Scroll to Top Button --> <button class="scroll-top"> <span>↑</span> </button> <!-- Theme Toggle Button --> <button id="bgToggle" class="theme-toggle"> </button> 
+  <script src="script.js"></script> 
+ 
+<script type="text/javascript" id="dcoder_script">document.addEventListener('DOMContentLoaded', () => {
+    // Initialize variables
+    const startDate = new Date('2025-05-29T00:00:40Z'); // Updated date and time
+    const sections = document.querySelectorAll('.section');
+    const sideNavLinks = document.querySelectorAll('.side-nav a');
+    
+    // Update scroll progress
+    function updateScrollProgress() {
+        const winScroll = window.pageYOffset;
+        const height = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.querySelector('.scroll-progress-bar').style.width = `${scrolled}%`;
+    }
+
+    // Update active section in side navigation
+    function updateActiveSection() {
+        const fromTop = window.scrollY + window.innerHeight / 2;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            
+            if (fromTop >= sectionTop && fromTop < sectionTop + sectionHeight) {
+                const sectionId = section.getAttribute('id');
+                
+                sideNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    // Check section visibility for animations
+    function checkSectionVisibility() {
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (sectionTop < windowHeight * 0.75) {
+                section.querySelector('.container').classList.add('visible');
+            }
+        });
+    }
+
+    // Update timer
+    function updateTimer() {
+        const now = new Date();
+        const diff = now - startDate;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+    }
+
+    // Update current time
+    function updateCurrentTime() {
+        const now = new Date();
+        document.getElementById('currentTime').textContent = 
+            now.toISOString().replace('T', ' ').slice(0, 19) + ' UTC';
+    }
+
+    // Toggle scroll to top button
+    function toggleScrollTopButton() {
+        const scrollTop = document.querySelector('.scroll-top');
+        if (window.pageYOffset > 500) {
+            scrollTop.classList.add('visible');
+        } else {
+            scrollTop.classList.remove('visible');
+        }
+    }
+
+    // Event Listeners
+    window.addEventListener('scroll', () => {
+        updateScrollProgress();
+        updateActiveSection();
+        checkSectionVisibility();
+        toggleScrollTopButton();
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Scroll to top button
+    document.querySelector('.scroll-top').addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Initialize
+    setInterval(updateTimer, 1000);
+    setInterval(updateCurrentTime, 1000);
+    updateTimer();
+    updateCurrentTime();
+    checkSectionVisibility();
+    updateScrollProgress();
+    updateActiveSection();
+});</script></body></html>
